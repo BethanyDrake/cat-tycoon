@@ -19,8 +19,10 @@ class App extends Component {
   { menuItem: 'Tab 3', render: () => <Tab.Pane>Tab 3 Content</Tab.Pane> },
 ]
     return (
-
+      <div>
+      $500
       <Tab panes={panes} />
+      </div>
     );
   }
 }

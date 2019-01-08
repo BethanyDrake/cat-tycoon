@@ -2,6 +2,7 @@ export const generateName = function(){
   return startingSounds.random() + vowels.random() + midSounds.random() + endings.random()
 }
 
+// eslint-disable-next-line
 Array.prototype.random = function () {
     let num = Math.floor(Math.random() * this.length);
     return this[num]
