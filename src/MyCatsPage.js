@@ -3,6 +3,19 @@ import CatProfile from './CatProfile.js';
 import { Grid } from 'semantic-ui-react'
 import { generateName } from './NameGenerator.js'
 class MyCatsPage extends Component {
+
+  constructor(props){
+    super(props)
+    let dataSource;
+    if (props.injected) {
+      dataSource = props.injected
+    }
+    else {
+      dataSource = window
+    }
+    this.state = {colors:dataSource.myCats}
+  }
+
   generateCats(num) {
     let catArray = []
     for (var i = 0; i < num; i++) {
@@ -21,7 +34,7 @@ class MyCatsPage extends Component {
 
   render() {
 
-    let colors = this.generateCats(13)
+    let colors = this.state.colors
     return (
       <Grid columns={5}>
       {colors.map(cat => (

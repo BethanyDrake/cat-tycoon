@@ -3,6 +3,18 @@ import ForSaleCatProfile from './ForSaleCatProfile.js';
 import { Grid } from 'semantic-ui-react'
 import { generateName } from './NameGenerator.js'
 class CatsForSalePage extends Component {
+
+  constructor(props){
+    super(props)
+    let dataSource;
+    if (props.injected) {
+      dataSource = props.injected
+    }
+    else {
+      dataSource = window
+    }
+    this.state = {colors:dataSource.catsForSale}
+  }
   generateCats(num) {
     let catArray = []
     for (var i = 0; i < num; i++) {
@@ -20,8 +32,8 @@ class CatsForSalePage extends Component {
   }
 
   render() {
-
-    let colors = this.generateCats(13)
+    console.log("cats for sale page money", window.money);
+    let colors = this.state.colors;
     return (
       <Grid columns={5}>
       {colors.map(cat => (

@@ -13,8 +13,18 @@ import { shallow } from 'enzyme';
 
 
 describe('my cats page', ()=> {
-  const appWrapper = shallow(<CatsForSale />);
-  it('should have a bunch of for sale cat profiles', ()=>{
-    expect(appWrapper.find(ForSaleCatProfile)).to.have.lengthOf(13);
-  })
+
+  describe('when there are no cats for sale', ()=> {
+    const appWrapper = shallow(<CatsForSale injected={{catsForSale:[]}} />);
+    it('should not display any cat profiles', ()=>{
+      expect(appWrapper.find(ForSaleCatProfile)).to.have.lengthOf(0);
+    });
+  });
+  describe('when there are some cats for sale', ()=> {
+    const appWrapper = shallow(<CatsForSale injected={{catsForSale:[{id:1},{id:2}]}} />);
+    it('should not display those cat profiles', ()=>{
+      expect(appWrapper.find(ForSaleCatProfile)).to.have.lengthOf(2);
+    });
+  });
+
 });

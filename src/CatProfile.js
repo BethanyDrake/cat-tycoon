@@ -5,11 +5,8 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 import { imageSources } from './images.js'
 class CatProfile extends Component {
 
-
-
-
   render() {
-
+    console.log("cat profile money", window.money)
     if (this.props.cat === undefined) {
       return (<></>)
     }
