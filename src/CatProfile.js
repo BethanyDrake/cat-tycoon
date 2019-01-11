@@ -10,7 +10,7 @@ class CatProfile extends Component {
     if (this.props.cat === undefined) {
       return (<></>)
     }
-    let imageSource = imageSources[this.props.cat.id % imageSources.length]
+    let imageSource = imageSources[this.props.cat.imageNumber % imageSources.length]
     return (<Card>
     <Image src={imageSource} resizemode='scale'/>
     <Card.Content>

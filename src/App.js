@@ -11,6 +11,7 @@ function generateCats(num) {
   for (var i = 0; i < num; i++) {
     catArray.push({
       id: i,
+      imageNumber: Math.floor(Math.random() * 100),
       name: generateName(),
       cuteness: Math.floor(Math.random() * 100),
       aggression: Math.floor(Math.random() * 100),
