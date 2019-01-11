@@ -41,7 +41,7 @@ describe('cat profile', () => {
 
 
   describe('when you click the sell button', ()=>{
-    let cat = {id:1};
+    let cat = {id:1, price:10};
     let otherCat = {id:2}
 
     let state = {
@@ -58,6 +58,7 @@ describe('cat profile', () => {
       catProfileWrapper.find('Button').simulate('click')
       expect(state.catsForSale).to.have.lengthOf(1);
       expect(state.myCats).to.have.lengthOf(1);
+      expect(state.money).to.equal(510);
     });
 
 

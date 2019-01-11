@@ -15,6 +15,8 @@ class MyCatsCatProfile extends Component{
     console.log("my cats before: ", this.data.myCats)
     this.data.catsForSale.push(this.props.cat)
     this.data.myCats = this.data.myCats.filter(cat => cat.id !== this.props.cat.id)
+    this.data.money += this.props.cat.price
+    if (this.data.stateManager) this.data.stateManager.updateState()
     console.log("my cats after: ", this.data.myCats)
   }
 

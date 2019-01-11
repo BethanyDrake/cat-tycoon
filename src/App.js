@@ -4,6 +4,7 @@ import MyCatsPage from './MyCatsPage.js';
 import CatsForSalePage from './CatsForSalePage.js';
 import { generateName } from './NameGenerator.js'
 import { Tab } from 'semantic-ui-react'
+import StateManager from './StateManager'
 //import _ from 'lodash'
 
 function generateCats(num) {
@@ -17,24 +18,30 @@ function generateCats(num) {
       aggression: Math.floor(Math.random() * 100),
       intelligence: Math.floor(Math.random() * 100),
       energy: Math.floor(Math.random() * 100),
-      affection:Math.floor(Math.random() * 100)
+      affection:Math.floor(Math.random() * 100),
+      price: 5
     })
   }
   return catArray
 }
 
-
 class App extends Component {
 
 
-
+  updateState(){
+    this.setState({money: window.money})
+  }
 
   constructor(props) {
     super(props)
-    window.money = 33
+    window.stateManager = new StateManager()
+    window.stateManager.listeners.push(this)
+    window.money = 500
     window.myCats = []
     window.catsForSale = generateCats(3)
     console.log("app catsForSale", window.catsForSale)
+    this.updateState = this.updateState.bind(this)
+
   }
 
   render() {
@@ -50,7 +57,7 @@ class App extends Component {
 ]
     return (
       <div>
-      $500
+      ${window.money}
       <Tab panes={panes} />
       </div>
     );
