@@ -51,7 +51,7 @@ describe('cat profile', () => {
     };
     let catProfileWrapper = mount(<MyCatsCatProfile cat = {cat} injected = {state}/>);
 
-    it('state should update state', ()=> {
+    it('state should update', ()=> {
       expect(state.catsForSale).to.have.lengthOf(0);
       expect(state.myCats).to.have.lengthOf(2);
       expect(state.money).to.equal(500);
@@ -59,6 +59,7 @@ describe('cat profile', () => {
       expect(state.catsForSale).to.have.lengthOf(1);
       expect(state.myCats).to.have.lengthOf(1);
       expect(state.money).to.equal(510);
+      expect(catProfileWrapper.text()).to.contain("SOLD")
     });
 
 

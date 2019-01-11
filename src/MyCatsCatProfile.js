@@ -7,6 +7,8 @@ class MyCatsCatProfile extends Component{
     super(props)
     this.data = props.injected ? props.injected : window
     this.sellCat = this.sellCat.bind(this)
+    this.state = {sold:false}
+    this.getButton = this.getButton.bind(this)
   }
 
 
@@ -18,12 +20,19 @@ class MyCatsCatProfile extends Component{
     this.data.money += this.props.cat.price
     if (this.data.stateManager) this.data.stateManager.updateState()
     console.log("my cats after: ", this.data.myCats)
+    this.setState({sold: true})
+  }
+
+  getButton(){
+    if (this.state.sold) return (<Button floated='right' disabled> SOLD </Button>)
+    return (<Button floated='right' onClick = {this.sellCat}> SELL </Button>)
   }
 
   render(){
-    const sellButton = <Button floated='right' onClick = {this.sellCat}> SELL </Button>
+    //const sellButton = <Button floated='right' onClick = {this.sellCat}> SELL </Button>
+    console.log("rendering", this.props.cat.name)
     return (
-      <CatProfile cat={this.props.cat} button = {sellButton}/>
+      <CatProfile cat={this.props.cat} button = {this.getButton()}/>
     )
   }
 }
