@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CatProfile from './CatProfile.js';
+import MyCatsCatProfile from './MyCatsCatProfile.js';
 import { Grid } from 'semantic-ui-react'
 import { generateName } from './NameGenerator.js'
 class MyCatsPage extends Component {
@@ -39,7 +39,7 @@ class MyCatsPage extends Component {
       <Grid columns={5}>
       {colors.map(cat => (
       <Grid.Column key = {cat.id} >
-        <CatProfile cat = {cat} />
+        <MyCatsCatProfile cat = {cat} />
       </Grid.Column>
 
     ))}
