@@ -6,14 +6,8 @@ class CatsForSalePage extends Component {
 
   constructor(props){
     super(props)
-    let dataSource;
-    if (props.injected) {
-      dataSource = props.injected
-    }
-    else {
-      dataSource = window
-    }
-    this.state = {colors:dataSource.catsForSale}
+    this.data = props.injected ? props.injected : window
+    this.state = {colors:this.data.catsForSale}
   }
   generateCats(num) {
     let catArray = []

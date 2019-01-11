@@ -5,14 +5,7 @@ import { Button } from 'semantic-ui-react'
 class MyCatsCatProfile extends Component{
   constructor(props){
     super(props)
-    let dataSource;
-    if (props.injected) {
-      dataSource = props.injected
-    }
-    else {
-      dataSource = window
-    }
-    this.data = dataSource
+    this.data = props.injected ? props.injected : window
     this.sellCat = this.sellCat.bind(this)
   }
 
