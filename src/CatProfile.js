@@ -15,7 +15,7 @@ class CatProfile extends Component {
     }
     let imageSource = imageSources[this.props.cat.id % imageSources.length]
     return (<Card>
-    <Image src={imageSource} resizemode='cover'/>
+    <Image src={imageSource} resizemode='scale'/>
     <Card.Content>
       <Card.Header><div className = "card_header_name">{this.props.cat.name}</div></Card.Header>
       <Card.Meta>
@@ -40,6 +40,7 @@ class CatProfile extends Component {
     <Card.Content extra>
         <Icon name='money' />
         203.30
+        {this.props.button}
     </Card.Content>
   </Card>)
   }
