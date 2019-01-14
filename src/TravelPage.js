@@ -39,7 +39,7 @@ class TravelButton extends Component {
   }
   render(){
     return(
-    <Button onClick={this.go}> {this.props.city} </Button>
+    <Button disabled={this.props.city===this.props.data.currentLocation} onClick={this.go}> {this.props.city} </Button>
   )
   }
 }

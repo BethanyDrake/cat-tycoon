@@ -6,10 +6,10 @@ import TravelPage from './TravelPage.js';
 import { generateName } from './NameGenerator.js'
 import { Tab } from 'semantic-ui-react'
 import StateManager from './StateManager'
-import { Container, Header } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 //import _ from 'lodash'
-import { Segment } from 'semantic-ui-react'
-import { Card} from 'semantic-ui-react'
+
+import { Item} from 'semantic-ui-react'
 
 let totalCatsGenerated = 0
 function generateCats(num) {
@@ -76,11 +76,20 @@ class App extends Component {
     return (
 
     <div style={{fontSize:0, margin:14}}>
-      <Header as='H1'>
+    <Item.Group relaxed>
+      <Item>
+      <Header as='h1'>
       ${window.money}
       <Header.Subheader>{window.currentLocation} </Header.Subheader>
       </Header>
+      </Item>
+      <Item>
+      <Header floated='right' as='h1'>
+      1st January
+      </Header>
+      </Item>
       <Tab panes={panes} />
+      </Item.Group>
     </div>
 
     );
