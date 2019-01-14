@@ -9,7 +9,10 @@ import StateManager from './StateManager'
 import { Header } from 'semantic-ui-react'
 //import _ from 'lodash'
 
+import { Container} from 'semantic-ui-react'
+
 import { Item} from 'semantic-ui-react'
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 let totalCatsGenerated = 0
 function generateCats(num) {
@@ -76,20 +79,15 @@ class App extends Component {
     return (
 
     <div style={{fontSize:0, margin:14}}>
-    <Item.Group relaxed>
-      <Item>
-      <Header as='h1'>
-      ${window.money}
-      <Header.Subheader>{window.currentLocation} </Header.Subheader>
-      </Header>
-      </Item>
-      <Item>
-      <Header floated='right' as='h1'>
-      1st January
-      </Header>
-      </Item>
-      <Tab panes={panes} />
-      </Item.Group>
+    <Header  floated='left' as='h1' style={{width:100}}>
+    ${window.money}
+    <Header.Subheader>{window.currentLocation} </Header.Subheader>
+    </Header>
+    <Header floated='right' as='h1' style={{width:200}}>
+    1st January
+    </Header>
+    <Tab panes={panes} />
+
     </div>
 
     );
