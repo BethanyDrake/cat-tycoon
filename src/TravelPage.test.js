@@ -9,8 +9,9 @@ import { shallow } from 'enzyme';
 import { render } from 'enzyme';
 import { mount } from 'enzyme';
 
+import moment from 'moment/moment.js';
 
-
+let a = 1
 
 import TravelPage from './TravelPage.js'
 
@@ -24,11 +25,14 @@ describe('travel page', () => {
 });
 
 describe('when you click a button', ()=> {
-  let state = {currentLocation:'A'};
+  let state = {currentLocation:'A', currentDate: moment("2000-01-01")};
   let travelPage = mount (<TravelPage injected={state}/>)
   it('should update the current location', () => {
+    expect(state.currentDate.format('Do MMMM')).to.equal("1st January");
     expect(state.currentLocation).to.equal('A');
     travelPage.find('Button').first().simulate('click')
     expect(state.currentLocation).to.equal('Melbourne');
+    expect(state.currentDate.format('Do MMMM')).to.equal("2nd January");
   });
+  
 });

@@ -35,6 +35,7 @@ class TravelButton extends Component {
   go(){
     console.log("going", this.props.data.currentLocation, this.props.city)
     this.props.data.currentLocation = this.props.city
+    this.props.data.currentDate = this.props.data.currentDate.add(1, 'd')
     if (this.props.data.locationManager) this.props.data.locationManager.updateState();
   }
   render(){

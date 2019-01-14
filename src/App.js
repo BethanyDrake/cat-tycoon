@@ -7,6 +7,7 @@ import { generateName } from './NameGenerator.js'
 import { Tab } from 'semantic-ui-react'
 import StateManager from './StateManager'
 import { Header } from 'semantic-ui-react'
+import moment from 'moment/moment.js';
 //import _ from 'lodash'
 
 import { Container} from 'semantic-ui-react'
@@ -52,6 +53,7 @@ class App extends Component {
     window.stateManager = new StateManager()
 
     window.currentLocation= 'Melbourne'
+    window.currentDate=moment("2000-01-01")
     window.money = 500
     window.myCats = []
     window.catsForSale = generateCats(3)
@@ -62,6 +64,7 @@ class App extends Component {
     window.locationManager = new StateManager()
     this.updateLocation= this.updateLocation.bind(this)
     window.locationManager.callbacks.push(this.updateLocation)
+
 
   }
 
@@ -84,7 +87,7 @@ class App extends Component {
     <Header.Subheader>{window.currentLocation} </Header.Subheader>
     </Header>
     <Header floated='right' as='h1' style={{width:200}}>
-    1st January
+    {window.currentDate.format('Do MMMM')}
     </Header>
     <Tab panes={panes} />
 
