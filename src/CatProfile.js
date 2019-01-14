@@ -35,8 +35,8 @@ class CatProfile extends Component {
       </Card.Meta>
     </Card.Content>
     <Card.Content extra>
-        <Icon name='money' />
-        203.30
+        <Icon name='money'/>
+        {this.props.cat.price}
         {this.props.button}
     </Card.Content>
   </Card>)

@@ -10,11 +10,13 @@ import { Container, Header } from 'semantic-ui-react'
 //import _ from 'lodash'
 import { Segment } from 'semantic-ui-react'
 import { Card} from 'semantic-ui-react'
+
+let totalCatsGenerated = 0
 function generateCats(num) {
   let catArray = []
   for (var i = 0; i < num; i++) {
     catArray.push({
-      id: i,
+      id: totalCatsGenerated++,
       imageNumber: Math.floor(Math.random() * 100),
       name: generateName(),
       cuteness: Math.floor(Math.random() * 100),
@@ -22,7 +24,7 @@ function generateCats(num) {
       intelligence: Math.floor(Math.random() * 100),
       energy: Math.floor(Math.random() * 100),
       affection:Math.floor(Math.random() * 100),
-      price: 5
+      price: Math.ceil(Math.random() * 10),
     })
   }
   return catArray
@@ -32,19 +34,31 @@ class App extends Component {
 
 
   updateState(){
-    this.setState({money: window.money})
+    this.setState({money: window.money, currentLocation:window.currentLocation})
+
+  }
+
+  updateLocation(){
+    window.catsForSale = generateCats(3)
+    window.myCats.forEach(cat => cat.price = Math.ceil(Math.random() * 10))
+    this.updateState()
   }
 
   constructor(props) {
     super(props)
     window.stateManager = new StateManager()
-    window.stateManager.listeners.push(this)
-    window.currentCity = 'Melbourne'
+
+    window.currentLocation= 'Melbourne'
     window.money = 500
     window.myCats = []
     window.catsForSale = generateCats(3)
     console.log("app catsForSale", window.catsForSale)
     this.updateState = this.updateState.bind(this)
+
+    window.stateManager.callbacks.push(this.updateState)
+    window.locationManager = new StateManager()
+    this.updateLocation= this.updateLocation.bind(this)
+    window.locationManager.callbacks.push(this.updateLocation)
 
   }
 
@@ -64,7 +78,7 @@ class App extends Component {
     <div style={{fontSize:0, margin:14}}>
       <Header as='H1'>
       ${window.money}
-      <Header.Subheader>{window.currentCity} </Header.Subheader>
+      <Header.Subheader>{window.currentLocation} </Header.Subheader>
       </Header>
       <Tab panes={panes} />
     </div>

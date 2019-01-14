@@ -59,7 +59,7 @@ describe('cat profile', () => {
       expect(state.catsForSale).to.have.lengthOf(1);
       expect(state.myCats).to.have.lengthOf(1);
       expect(state.money).to.equal(490);
-      expect(catProfileStaticWrapper.text()).to.contain("SOLD")
+      expect(catProfileWrapper.text()).to.contain("SOLD")
     });
 
 
