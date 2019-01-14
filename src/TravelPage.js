@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react'
+import {locations} from './locations.js'
 class TravelPage extends Component {
 
 
@@ -15,8 +16,7 @@ class TravelPage extends Component {
   render(){
     return (
       <>
-        <TravelButton data={this.data} city='Melbourne'/>
-        <TravelButton data={this.data} city='Geelong'/>
+      {Object.keys(locations).map(city => <TravelButton data={this.data} city={city}/>)}
 
       </>
     )

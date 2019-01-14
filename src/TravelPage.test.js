@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import {expect} from 'chai';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import { Button } from 'semantic-ui-react'
+import {locations} from './locations.js'
 
 configure({ adapter: new Adapter() });
 import { shallow } from 'enzyme';
@@ -15,12 +17,12 @@ let a = 1
 
 import TravelPage from './TravelPage.js'
 
-import { Button } from 'semantic-ui-react'
+
 
 describe('travel page', () => {
   let travelPageShallow = mount(<TravelPage/>)
   it('should have a bunch of buttons', () => {
-    expect(travelPageShallow.find(Button)).to.have.lengthOf(2)
+    expect(travelPageShallow.find(Button)).to.have.lengthOf(Object.keys(locations).length)
   });
 });
 
@@ -34,5 +36,5 @@ describe('when you click a button', ()=> {
     expect(state.currentLocation).to.equal('Melbourne');
     expect(state.currentDate.format('Do MMMM')).to.equal("2nd January");
   });
-  
+
 });
