@@ -8,12 +8,7 @@ import { Tab } from 'semantic-ui-react'
 import StateManager from './StateManager'
 import { Header } from 'semantic-ui-react'
 import moment from 'moment/moment.js';
-//import _ from 'lodash'
-
-import { Container} from 'semantic-ui-react'
-
-import { Item} from 'semantic-ui-react'
-import { Grid, Row, Col } from 'react-flexbox-grid';
+import {locations} from './locations.js'
 
 let totalCatsGenerated = 0
 function generateCats(num) {
@@ -44,7 +39,7 @@ class App extends Component {
 
   updateLocation(){
     window.catsForSale = generateCats(3)
-    window.myCats.forEach(cat => cat.price = Math.ceil(Math.random() * 10))
+    window.myCats.forEach(cat => cat.price = locations[window.currentLocation].algorithm(cat))
     this.updateState()
   }
 
