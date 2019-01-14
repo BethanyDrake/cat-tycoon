@@ -26,6 +26,8 @@ function generateCats(num) {
       price: Math.ceil(Math.random() * 10),
     })
   }
+
+  catArray.forEach(cat => cat.price = locations[window.currentLocation].calcPrice(cat))
   return catArray
 }
 
@@ -39,7 +41,7 @@ class App extends Component {
 
   updateLocation(){
     window.catsForSale = generateCats(3)
-    window.myCats.forEach(cat => cat.price = locations[window.currentLocation].algorithm(cat))
+    window.myCats.forEach(cat => cat.price = locations[window.currentLocation].calcPrice(cat))
     this.updateState()
   }
 
