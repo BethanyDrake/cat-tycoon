@@ -26,7 +26,6 @@ class CatsForSalePage extends Component {
   }
 
   render() {
-    console.log("cats for sale page money", window.money);
     let colors = this.state.colors;
     return (
       <Grid columns={5}>

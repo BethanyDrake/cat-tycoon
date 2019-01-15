@@ -13,13 +13,12 @@ class MyCatsCatProfile extends Component{
 
 
   sellCat() {
-    console.log("selling cat: ", this.props.cat.name)
-    console.log("my cats before: ", this.data.myCats)
+
     this.data.catsForSale.push(this.props.cat)
     this.data.myCats = this.data.myCats.filter(cat => cat.id !== this.props.cat.id)
     this.data.money += this.props.cat.price
     if (this.data.stateManager) this.data.stateManager.updateState()
-    console.log("my cats after: ", this.data.myCats)
+
     this.setState({sold: true})
   }
 
@@ -30,7 +29,7 @@ class MyCatsCatProfile extends Component{
 
   render(){
     //const sellButton = <Button floated='right' onClick = {this.sellCat}> SELL </Button>
-    console.log("rendering", this.props.cat.name)
+
     return (
       <CatProfile cat={this.props.cat} button = {this.getButton()}/>
     )

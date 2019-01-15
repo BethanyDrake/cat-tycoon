@@ -13,12 +13,11 @@ class ForSaleCatProfile extends Component{
 
 
   sellCat() {
-    console.log("selling cat: ", this.props.cat.name)
-    console.log("my cats before: ", this.data.myCats)
+
     this.data.myCats.push(this.props.cat)
     this.data.catsForSale = this.data.catsForSale.filter(cat => cat.id !== this.props.cat.id)
     this.data.money -= this.props.cat.price
-    console.log("my cats after: ", this.data.myCats)
+    
     if (this.data.stateManager) this.data.stateManager.updateState();
     this.setState({sold:true})
   }

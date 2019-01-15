@@ -7,7 +7,6 @@ class TravelPage extends Component {
   constructor(props){
     super(props)
     this.data = props.injected ? props.injected : window
-
   }
 
 
@@ -16,7 +15,7 @@ class TravelPage extends Component {
   render(){
     return (
       <>
-      {Object.keys(locations).map(city => <TravelButton data={this.data} city={city}/>)}
+      {Object.keys(locations).map(city => <TravelButton data={this.data} city={city} key={city}/>)}
 
       </>
     )
@@ -29,13 +28,11 @@ export default TravelPage
 class TravelButton extends Component {
   constructor(props){
     super(props)
-    console.log(this.props)
     this.go = this.go.bind(this)
 
   }
   go(){
     let currentLocation = this.props.data.currentLocation
-    console.log("going", this.props.data.currentLocation, this.props.city)
     this.props.data.currentLocation = this.props.city
     let distance = locations[currentLocation].connections[this.props.city]
     this.props.data.currentDate = this.props.data.currentDate.add(distance, 'd')
@@ -48,7 +45,7 @@ class TravelButton extends Component {
     let isCurrentCity = this.props.city===this.props.data.currentLocation
     if (isCurrentCity) distance = 0;
     var unit = "days"
-    if (distance == 1) unit = "day"
+    if (distance === 1) unit = "day"
     var toWrite;
     if (distance === undefined) {
       unit = ""

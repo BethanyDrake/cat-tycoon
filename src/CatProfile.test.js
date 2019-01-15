@@ -17,7 +17,7 @@ import { Image } from 'semantic-ui-react'
 describe('cat profile', () => {
 
 
-  const cat = { name: "NAME", cuteness: 1, aggression: 2, intelligence: 3, energy: 4, affection: 5  }
+  const cat = { name: "NAME", cuteness: 1, aggression: 2, intelligence: 3, energy: 4, affection: 5, price: 1  }
   const catProfileStaticWrapper = render(<CatProfile cat={cat}/>);
   const catProfileWrapper = shallow(<CatProfile cat = {cat} />);
   it('has an image', () => {

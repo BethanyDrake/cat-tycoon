@@ -59,7 +59,6 @@ class App extends Component {
     window.money = 500
     window.myCats = []
     window.catsForSale = generateCats(3)
-    console.log("app catsForSale", window.catsForSale)
     this.updateState = this.updateState.bind(this)
 
     window.stateManager.callbacks.push(this.updateState)
@@ -75,9 +74,6 @@ class App extends Component {
 
   render() {
 
-
-    console.log("app money", window.money)
-    console.log("app catsForSale", window.catsForSale)
 
     let panes = [
   { menuItem: 'For Sale', render: () => <Tab.Pane><CatsForSalePage/></Tab.Pane> },

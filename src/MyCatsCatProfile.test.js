@@ -18,7 +18,7 @@ import { Image } from 'semantic-ui-react'
 describe('cat profile', () => {
   describe('when you set it up', () => {
 
-    const cat = { name: "NAME", cuteness: 1, aggression: 2, intelligence: 3, energy: 4, affection: 5  }
+    const cat = { name: "NAME", cuteness: 1, aggression: 2, intelligence: 3, energy: 4, affection: 5, price:1  }
     const catProfileStaticWrapper = render(<MyCatsCatProfile cat={cat}/>);
     const catProfileWrapper = shallow(<MyCatsCatProfile cat = {cat} />);
     const catProfileMountedWrapper = mount(<MyCatsCatProfile cat = {cat} />);
