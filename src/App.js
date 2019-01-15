@@ -45,6 +45,11 @@ class App extends Component {
     this.updateState()
   }
 
+  updateDate(){
+    window.money -= window.myCats.length
+    this.setState({money: window.money, currentLocation:window.currentLocation})
+  }
+
   constructor(props) {
     super(props)
     window.stateManager = new StateManager()
@@ -59,6 +64,9 @@ class App extends Component {
 
     window.stateManager.callbacks.push(this.updateState)
     window.locationManager = new StateManager()
+    window.dateManager = new StateManager()
+    this.updateDate = this.updateDate.bind(this)
+    window.dateManager.callbacks.push(this.updateDate)
     this.updateLocation= this.updateLocation.bind(this)
     window.locationManager.callbacks.push(this.updateLocation)
 
@@ -80,7 +88,7 @@ class App extends Component {
 
     <div style={{fontSize:0, margin:14}}>
     <Header  floated='left' as='h1' style={{width:100}}>
-    ${window.money}
+    ${window.money.toFixed(2)}
     <Header.Subheader>{window.currentLocation} </Header.Subheader>
     </Header>
     <Header floated='right' as='h1' style={{width:200}}>

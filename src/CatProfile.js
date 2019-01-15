@@ -36,7 +36,7 @@ class CatProfile extends Component {
     </Card.Content>
     <Card.Content extra>
         <Icon name='money'/>
-        {this.props.cat.price}
+        {this.props.cat.price.toFixed(2)}
         {this.props.button}
     </Card.Content>
   </Card>)

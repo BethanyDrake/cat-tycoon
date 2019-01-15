@@ -39,6 +39,7 @@ class TravelButton extends Component {
     this.props.data.currentLocation = this.props.city
     let distance = locations[currentLocation].connections[this.props.city]
     this.props.data.currentDate = this.props.data.currentDate.add(distance, 'd')
+    if (this.props.data.dateManager) this.props.data.dateManager.updateState();
     if (this.props.data.locationManager) this.props.data.locationManager.updateState();
   }
   render(){
