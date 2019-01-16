@@ -36,19 +36,18 @@ class App extends Component {
 
 
   updateState(){
-    this.setState({money: window.money, currentLocation:window.currentLocation})
+    this.setState({})
 
   }
 
   updateLocation(){
     window.catsForSale = generateCats(3)
     window.myCats.forEach(cat => cat.price = locations[window.currentLocation].calcPrice(cat))
-    this.updateState()
+    this.setState({})
   }
-
-  updateDate(){
-    window.money -= window.myCats.length
-    this.setState({money: window.money, currentLocation:window.currentLocation})
+  updateDate(data){
+    window.food -= window.myCats.length * data.daysPassed
+    this.setState({})
   }
 
   constructor(props) {
@@ -58,13 +57,14 @@ class App extends Component {
     window.currentLocation= 'Melbourne'
     window.currentDate=moment("2000-01-01")
     window.money = 500
+    window.food = 50
     window.myCats = []
     window.catsForSale = generateCats(3)
     this.updateState = this.updateState.bind(this)
 
     window.stateManager.callbacks.push(this.updateState)
     window.locationManager = new StateManager()
-    window.dateManager = new StateManager()
+    window.dateManager = new StateManager(window.currentDate)
     this.updateDate = this.updateDate.bind(this)
     window.dateManager.callbacks.push(this.updateDate)
     this.updateLocation= this.updateLocation.bind(this)
@@ -86,7 +86,7 @@ class App extends Component {
 
     <div style={{fontSize:0, margin:14}}>
 
-    <div style={{display:'flex', 'justify-content':'space-between', 'align-items':'baseline'}}>
+    <div style={{display:'flex', 'justifyContent':'space-between', 'alignItems':'baseline'}}>
 
 
     <Header as='h1'>
@@ -95,8 +95,8 @@ class App extends Component {
     </Header>
 
     <Header as='h1'>
-    Food: 3
-    <Header.Subheader>(-0 per day)</Header.Subheader>
+    Food: {window.food}
+    <Header.Subheader style={{'textAlign':'center'}} >(-{window.myCats.length} per day)</Header.Subheader>
     </Header>
 
     <Header as='h1'>

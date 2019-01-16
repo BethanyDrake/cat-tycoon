@@ -1,12 +1,11 @@
 class StateManager{
-
-  constructor(){
+  constructor(initialValue){
     this.callbacks = []
     this.updateState = this.updateState.bind(this)
   }
 
-  updateState(){
-    this.callbacks.forEach(callback=> callback(this))
+  updateState(data){
+    this.callbacks.forEach(callback=> callback(data))
   }
 
   register(callback){

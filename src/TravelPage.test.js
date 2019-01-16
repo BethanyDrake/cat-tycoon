@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+global.jestExpect = global.expect;
 import {expect} from 'chai';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -19,6 +20,8 @@ import TravelPage from './TravelPage.js'
 
 
 
+
+
 describe('travel page', () => {
   let state = {currentLocation:'Adelaide', currentDate: moment("2000-01-01")};
   let travelPageShallow = mount(<TravelPage injected={state}/>)
@@ -28,14 +31,20 @@ describe('travel page', () => {
 });
 
 describe('when you click a button', ()=> {
-  let state = {currentLocation:'Adelaide', currentDate: moment("2000-01-01")};
-  let travelPage = mount (<TravelPage injected={state}/>)
+  let mockWindow = {currentLocation:'Adelaide', currentDate: moment("2000-01-01"), food: 100, myCats:[{key:1}]};
+  let calledWith = null
+  let fakeUpdateState = jest.fn()
+  mockWindow.dateManager = {updateState: fakeUpdateState}
+  let travelPage = mount (<TravelPage injected={mockWindow}/>)
+
   it('should update the current location', () => {
-    expect(state.currentDate.format('Do MMMM')).to.equal("1st January");
-    expect(state.currentLocation).to.equal('Adelaide');
+    expect(mockWindow.currentDate.format('Do MMMM')).to.equal("1st January");
+    expect(mockWindow.currentLocation).to.equal('Adelaide');
+    expect(mockWindow.food).to.equal(100);
     travelPage.find('Button').first().simulate('click')
-    expect(state.currentLocation).to.equal('Melbourne');
-    expect(state.currentDate.format('Do MMMM')).to.equal("2nd January");
+    expect(mockWindow.currentLocation).to.equal('Melbourne');
+    expect(mockWindow.currentDate.format('Do MMMM')).to.equal("2nd January");
+    jestExpect(fakeUpdateState).toHaveBeenCalledWith({daysPassed:1})
   });
 
 });

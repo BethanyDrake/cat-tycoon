@@ -17,7 +17,7 @@ class ForSaleCatProfile extends Component{
     this.data.myCats.push(this.props.cat)
     this.data.catsForSale = this.data.catsForSale.filter(cat => cat.id !== this.props.cat.id)
     this.data.money -= this.props.cat.price
-    
+
     if (this.data.stateManager) this.data.stateManager.updateState();
     this.setState({sold:true})
   }

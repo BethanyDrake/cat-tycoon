@@ -29,10 +29,22 @@ describe('the main app', () => {
   });
 });
 
-describe('when you go money', () => {
-  const appWrapper = mount(<App />);
-  appWrapper.setState({money: 500})
+describe('what you see', () => {
+  const appWrapper = mount(<App/>);
+
   it('should display money', () => {
     expect(appWrapper.text()).to.contain("$500")
+  });
+  it('should display currentLocation', () => {
+    expect(appWrapper.text()).to.contain("Melbourne")
+  });
+  it('should display date nicely', () => {
+    expect(appWrapper.text()).to.contain("1st January")
+  });
+  it('should display food', () => {
+    expect(appWrapper.text()).to.contain("Food: 50")
+  });
+  it('should how much youre eating per day', () => {
+    expect(appWrapper.text()).to.contain("(-0 per day)")
   });
 });
