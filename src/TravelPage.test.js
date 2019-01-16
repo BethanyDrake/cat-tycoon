@@ -33,18 +33,21 @@ describe('travel page', () => {
 describe('when you click a button', ()=> {
   let mockWindow = {currentLocation:'Adelaide', currentDate: moment("2000-01-01"), food: 100, myCats:[{key:1}]};
   let calledWith = null
-  let fakeUpdateState = jest.fn()
-  mockWindow.dateManager = {updateState: fakeUpdateState}
+  let fakeUpdateDate= jest.fn()
+  let fakeUpdateLocation= jest.fn()
+  mockWindow.dateManager = {updateState: fakeUpdateDate}
+  mockWindow.locationManager = {updateState: fakeUpdateLocation}
   let travelPage = mount (<TravelPage injected={mockWindow}/>)
 
   it('should update the current location', () => {
     expect(mockWindow.currentDate.format('Do MMMM')).to.equal("1st January");
     expect(mockWindow.currentLocation).to.equal('Adelaide');
     expect(mockWindow.food).to.equal(100);
-    travelPage.find('Button').first().simulate('click')
+    travelPage.find({city:'Melbourne'}).simulate('click')
     expect(mockWindow.currentLocation).to.equal('Melbourne');
     expect(mockWindow.currentDate.format('Do MMMM')).to.equal("2nd January");
-    jestExpect(fakeUpdateState).toHaveBeenCalledWith({daysPassed:1})
+    jestExpect(fakeUpdateDate).toHaveBeenCalledWith({daysPassed:1})
+    jestExpect(fakeUpdateLocation).toHaveBeenCalled()
   });
 
 });
