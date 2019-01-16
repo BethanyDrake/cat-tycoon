@@ -83,14 +83,27 @@ class App extends Component {
 ]
     return (
 
+
     <div style={{fontSize:0, margin:14}}>
-    <Header  floated='left' as='h1' style={{width:100}}>
+
+    <div style={{display:'flex', 'justify-content':'space-between', 'align-items':'baseline'}}>
+
+
+    <Header as='h1'>
     ${window.money.toFixed(2)}
     <Header.Subheader>{window.currentLocation} </Header.Subheader>
     </Header>
-    <Header floated='right' as='h1' style={{width:200}}>
+
+    <Header as='h1'>
+    Food: 3
+    <Header.Subheader>(-0 per day)</Header.Subheader>
+    </Header>
+
+    <Header as='h1'>
     {window.currentDate.format('Do MMMM')}
     </Header>
+
+    </div>
     <Tab panes={panes} />
 
     </div>
