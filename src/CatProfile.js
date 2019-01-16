@@ -15,7 +15,7 @@ class CatProfile extends Component {
     <Card.Content>
       <Card.Header><div className = "card_header_name">{this.props.cat.name}</div></Card.Header>
       <Card.Meta>
-        Age: 18
+        Age: {this.props.cat.age} years
       </Card.Meta>
       <Card.Meta>
         Cuteness: {this.props.cat.cuteness}

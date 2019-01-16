@@ -19,11 +19,11 @@ connections:{'Alice Springs': 5, 'Adelaide': 6}
 },
 'Darwin':{
 calcPrice:(cat) => 1,
-connections:{}
+connections:{'Alice Springs': 4}
 },
 'Alice Springs':{
 calcPrice:(cat) => cat.cuteness/7,
-connections:{'Perth':5, 'Adelaide':5,}
+connections:{'Perth':5, 'Adelaide':5, 'Darwin':4}
 },
 'Sydney':{
 calcPrice:(cat) => cat.affection/4,

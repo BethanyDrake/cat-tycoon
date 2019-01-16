@@ -17,7 +17,7 @@ import { Image } from 'semantic-ui-react'
 describe('cat profile', () => {
 
 
-  const cat = { name: "NAME", cuteness: 1, aggression: 2, intelligence: 3, energy: 4, affection: 5, price: 1  }
+  const cat = { name: "NAME", cuteness: 1, aggression: 2, intelligence: 3, energy: 4, affection: 5, price: 1, age:3  }
   const catProfileStaticWrapper = render(<CatProfile cat={cat}/>);
   const catProfileWrapper = shallow(<CatProfile cat = {cat} />);
   it('has an image', () => {
@@ -25,6 +25,7 @@ describe('cat profile', () => {
   });
   it('has has all the stats', () => {
     expect(catProfileStaticWrapper.text()).to.contain("NAME")
+    expect(catProfileStaticWrapper.text()).to.contain("Age: 3 years")
     expect(catProfileStaticWrapper.text()).to.contain("Cuteness: 1")
     expect(catProfileStaticWrapper.text()).to.contain("Aggression: 2")
     expect(catProfileStaticWrapper.text()).to.contain("Intelligence: 3")

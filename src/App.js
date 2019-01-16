@@ -24,6 +24,7 @@ function generateCats(num) {
       energy: Math.floor(Math.random() * 100),
       affection:Math.floor(Math.random() * 100),
       price: Math.ceil(Math.random() * 10),
+      age: Math.floor(Math.random() * 19) +1,
     })
   }
 
